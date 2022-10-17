@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "House Evolution/Level Serialization", order = 1)]
+[CreateAssetMenu(menuName = "Button Fever/Level Serialization", order = 1)]
 
 public class LevelSerialization : ScriptableObject
 {
