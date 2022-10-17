@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,41 +7,40 @@ using UnityEngine.Rendering;
 public class Button : PoolObject, ISelectableObject
 {
     [SerializeField] private ButtonBody _body;
-
+    [SerializeField] private float _yAxisSelectionOffset;
     private GameEnums.ButtonTypes _currentType;
 
     private Vector3 _selectionOffset;
-    private float _zAxisPosition;
+
+    public override void SetActive()
+    {
+        Initialize();
+        base.SetActive();
+    }
     public void Initialize()
     {
+        _currentType = GameEnums.ButtonTypes.One;
         _body.Initialize(_currentType);
     }
     #region ISelectable
-    public void Select()
+    public void Select(Vector3 inputPos)
     {
-        _zAxisPosition = Camera.main.WorldToScreenPoint(transform.position).z;
-        _selectionOffset = transform.position - GetMouseWorldPosition();
+        transform.DOMoveY(transform.position.y + _yAxisSelectionOffset, .3f);
+        _selectionOffset = transform.position - inputPos;
     }
-    public void Drag(Vector2 inputPos)
+    public void Drag(Vector3 inputPos)
     {
-        Vector3 pos = GetMouseWorldPosition() + _selectionOffset;
-        pos.y = 0f;
-        transform.position = pos;
+        Vector3 pos = inputPos + _selectionOffset;
+        pos.y = _yAxisSelectionOffset;
+        transform.DOMove(pos, .1f);
     }
 
     public void Drop()
     {
-        _selectionOffset.z = 0f;
+        transform.DOMoveY(0f, .3f);
     }
 
-    private Vector3 GetMouseWorldPosition()
-    {
-        Vector3 position = Input.mousePosition;
 
-        position.z = _zAxisPosition;
-
-        return Camera.main.ScreenToWorldPoint(position);
-    }
     #endregion
 
 
