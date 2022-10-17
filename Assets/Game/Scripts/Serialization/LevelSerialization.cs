@@ -11,3 +11,4 @@ public class LevelSerialization : ScriptableObject
     public Level this[int i] => levels[i];
     public int Count => levels.Count;
 }
+
