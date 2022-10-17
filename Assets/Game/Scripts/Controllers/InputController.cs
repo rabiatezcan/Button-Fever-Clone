@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class InputController : Controller
 {
-    [SerializeField] private Camera _cameraTransform;
-
     private InputHandler _inputHandler;
     private ISelectableObject _currentObject;
 
@@ -25,7 +23,7 @@ public class InputController : Controller
     {
     }
 
-    public override void GameSuccess()
+    public override void GameOver()
     {
         StopListenInputs();
         _inputHandler.RemoveInputs();
@@ -82,8 +80,4 @@ public class InputController : Controller
         _inputHandler.Update();
     }
 
-    public override void GameFail()
-    {
-        throw new NotImplementedException();
-    }
 }
