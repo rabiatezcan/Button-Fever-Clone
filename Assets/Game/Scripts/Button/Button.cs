@@ -1,11 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-public class Button : MonoBehaviour, ISelectableObject
+public class Button : PoolObject, ISelectableObject
 {
+    [SerializeField] private ButtonBody _body;
+
+    private GameEnums.ButtonTypes _currentType;
+
     private Vector3 _selectionOffset;
     private float _zAxisPosition;
+    public void Initialize()
+    {
+        _body.Initialize(_currentType);
+    }
+    #region ISelectable
     public void Select()
     {
         _zAxisPosition = Camera.main.WorldToScreenPoint(transform.position).z;
@@ -16,7 +26,6 @@ public class Button : MonoBehaviour, ISelectableObject
         Vector3 pos = GetMouseWorldPosition() + _selectionOffset;
         pos.y = 0f;
         transform.position = pos;
-        _selectionOffset.z = GetMouseWorldPosition().z;
     }
 
     public void Drop()
@@ -32,6 +41,8 @@ public class Button : MonoBehaviour, ISelectableObject
 
         return Camera.main.ScreenToWorldPoint(position);
     }
+    #endregion
+
 
     #region Trigger Behaviour
 

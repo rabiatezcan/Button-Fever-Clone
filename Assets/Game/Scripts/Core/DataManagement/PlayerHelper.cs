@@ -26,6 +26,7 @@ public class PlayerHelper
         }
     }
 
+    public int PlayerLevel => _playerData.Level;
     private void Save()
     {
         SaveSystem.Save(_playerData);

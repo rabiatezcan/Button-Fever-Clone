@@ -7,6 +7,8 @@ public class LevelController : Controller
     [SerializeField] private LevelSerialization _levels;
     private Level _currentLevel;
 
+    public Level CurrentLevel => _currentLevel;
+
     #region States
     public override void Initialize(GameManager gameManager)
     {
@@ -20,18 +22,21 @@ public class LevelController : Controller
         UnloadLevel();
         LoadLevel();
     }
-    public override void GameFail()
+    public override void GameOver()
     {
     }
 
-    public override void GameSuccess()
-    {
-    }
     #endregion
 
     private void LoadLevel()
     {
-        _currentLevel.Initialize();
+        int currentLevelCount = PlayerHelper.Instance.PlayerLevel - 1;
+
+        if (currentLevelCount >= _levels.Count)
+        {
+            currentLevelCount = Random.Range(0, _levels.Count);
+        }
+        _currentLevel = Instantiate(_levels[currentLevelCount]);
         _currentLevel.Build();
     }
 

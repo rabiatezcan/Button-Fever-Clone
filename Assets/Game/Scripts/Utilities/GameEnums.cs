@@ -11,4 +11,12 @@ public class GameEnums
         Both
     }
 
+    public enum ButtonTypes
+    {
+        One,
+        Two,
+        Four,
+        Eight
+    }
+
 }

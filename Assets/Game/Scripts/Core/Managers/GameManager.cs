@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
             return _gameManager;
         }
     }
-
+    public LevelController LevelController => _controllers[1].GetComponent<LevelController>();
     #region Init
     private void Awake()
     {
@@ -55,20 +55,9 @@ public class GameManager : MonoBehaviour
     {
         _controllers.ForEach(controller => controller.Reload());
     }
-    public void GameSuccess()
-    {
-        _controllers.ForEach(controller => controller.GameSuccess());
-
-        GameOver();
-    }
-    public void GameFail()
-    {
-        _controllers.ForEach(controller => controller.GameFail());
-
-        GameOver();
-    }
     public void GameOver()
     {
+        _controllers.ForEach(controller => controller.GameOver());
     }
     #endregion
 }
