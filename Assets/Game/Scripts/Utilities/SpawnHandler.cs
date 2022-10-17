@@ -12,8 +12,7 @@ public class SpawnHandler : MonoBehaviour
     public void Spawn()
     {
         if (!CanSpawn())
-            return; 
-
+            return;
         var button = PoolHandler.Instance.GetItemFromPool("Button") as Button;
         button.SetPosition(_levelController.CurrentLevel.GetSpawnPoint() + Vector3.up);
         button.SetActive();
