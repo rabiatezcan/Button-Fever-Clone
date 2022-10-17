@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 470790227888240679}
   - component: {fileID: 470790227888240678}
   m_Layer: 0
-  m_Name: ButtonSpawnArea
+  m_Name: ButtonSpawnAndMergeArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -802,7 +802,7 @@ Transform:
   m_GameObject: {fileID: 2691997139121463773}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 470790227444173944}
   m_RootOrder: 0
@@ -832,7 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007bfd5f17f1a6643b5e9ae30f2b94b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Trigger: 0
+  Trigger: 2
   CompareTagName: Button
   TriggerEnterCallback:
     m_PersistentCalls:
@@ -840,7 +840,7 @@ MonoBehaviour:
       - m_Target: {fileID: 470790227444173941}
         m_TargetAssemblyTypeName: SpawnPoint, Assembly-CSharp
         m_MethodName: TriggerEnterBehaviour
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -855,7 +855,7 @@ MonoBehaviour:
       - m_Target: {fileID: 470790227444173941}
         m_TargetAssemblyTypeName: SpawnPoint, Assembly-CSharp
         m_MethodName: TriggerExitBehaviour
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -891,7 +891,7 @@ Transform:
   m_GameObject: {fileID: 4661810337316467508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: -0.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 470790227249883154}
   m_RootOrder: 0
@@ -921,7 +921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007bfd5f17f1a6643b5e9ae30f2b94b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Trigger: 0
+  Trigger: 2
   CompareTagName: Button
   TriggerEnterCallback:
     m_PersistentCalls:
@@ -929,7 +929,7 @@ MonoBehaviour:
       - m_Target: {fileID: 470790227249883247}
         m_TargetAssemblyTypeName: SpawnPoint, Assembly-CSharp
         m_MethodName: TriggerEnterBehaviour
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -944,7 +944,7 @@ MonoBehaviour:
       - m_Target: {fileID: 470790227249883247}
         m_TargetAssemblyTypeName: SpawnPoint, Assembly-CSharp
         m_MethodName: TriggerExitBehaviour
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -980,7 +980,7 @@ Transform:
   m_GameObject: {fileID: 8391597028870196524}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 470790228753308008}
   m_RootOrder: 0
@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007bfd5f17f1a6643b5e9ae30f2b94b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Trigger: 0
+  Trigger: 2
   CompareTagName: Button
   TriggerEnterCallback:
     m_PersistentCalls:
@@ -1018,7 +1018,7 @@ MonoBehaviour:
       - m_Target: {fileID: 470790228753308005}
         m_TargetAssemblyTypeName: SpawnPoint, Assembly-CSharp
         m_MethodName: TriggerEnterBehaviour
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1033,7 +1033,7 @@ MonoBehaviour:
       - m_Target: {fileID: 470790228753308005}
         m_TargetAssemblyTypeName: SpawnPoint, Assembly-CSharp
         m_MethodName: TriggerExitBehaviour
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
