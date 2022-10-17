@@ -10,7 +10,6 @@ public abstract class Controller : MonoBehaviour
     public abstract void StartGame();
     
     public abstract void Reload();
-    public abstract void GameSuccess();
-    public abstract void GameFail();
+    public abstract void GameOver();
 
 }
