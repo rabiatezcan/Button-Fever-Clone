@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class InputController : Controller
 {
+    [SerializeField] Camera _camera;
+
     private InputHandler _inputHandler;
     private ISelectableObject _currentObject;
 
     #region Core
     public override void Initialize(GameManager gameManager)
     {
-        _inputHandler = new InputHandler();
+        _inputHandler = new InputHandler(_camera);
     }
 
     public override void StartGame()
@@ -26,7 +28,6 @@ public class InputController : Controller
     public override void GameOver()
     {
         StopListenInputs();
-        _inputHandler.RemoveInputs();
     }
 
     #endregion
@@ -43,7 +44,7 @@ public class InputController : Controller
         _inputHandler.OnMouseButtonUp -= Drop;
     }
 
-    public void Select()
+    public void Select(Vector3 inputPos)
     {
         RaycastHit hit;
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -54,15 +55,15 @@ public class InputController : Controller
             {
                 _currentObject = hit.transform.GetComponentInParent<ISelectableObject>();
 
-                _currentObject.Select();
+                _currentObject.Select(inputPos);
             }
         }
     }
 
-    public void Drag(Vector2 deltaPos)
+    public void Drag(Vector3 inputPos)
     {
         if (_currentObject != null)
-            _currentObject.Drag(deltaPos);
+            _currentObject.Drag(inputPos);
     }
 
     public void Drop()
