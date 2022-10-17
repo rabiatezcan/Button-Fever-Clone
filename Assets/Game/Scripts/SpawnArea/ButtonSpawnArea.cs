@@ -9,8 +9,7 @@ public class ButtonSpawnArea : MonoBehaviour
 
     public Vector3 GetSpawnPoint()
     {
-        SpawnPoint point = _spawnPoints.First(point => !point.IsFull);
-
+        SpawnPoint point = _spawnPoints.FirstOrDefault(point => !point.IsFull);
         if(point == null)
             return Vector3.zero;
 
