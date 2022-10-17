@@ -11,6 +11,13 @@ public class Button : PoolObject, ISelectableObject
     private GameEnums.ButtonTypes _currentType;
 
     private Vector3 _selectionOffset;
+    private bool _onMergeArea;
+
+    public bool OnMergeArea 
+    {
+        get => _onMergeArea; 
+        set => _onMergeArea = value;
+    }
 
     public override void SetActive()
     {
@@ -22,6 +29,14 @@ public class Button : PoolObject, ISelectableObject
         _currentType = GameEnums.ButtonTypes.One;
         _body.Initialize(_currentType);
     }
+
+    public void IncreaseBody()
+    {
+        _currentType++;
+        transform.DOMoveY(0f, .1f);
+        _body.IncreaseBody(_currentType);
+    }
+
     #region ISelectable
     public void Select(Vector3 inputPos)
     {
@@ -48,7 +63,10 @@ public class Button : PoolObject, ISelectableObject
 
     public void TriggerEnterBehaviour(Collider other)
     {
-
+        if (other.CompareTag("Button"))
+        {
+            MergeHandler.AddMergeElement(this);
+        }
     }
     public void TriggerExitBehaviour(Collider other)
     {
