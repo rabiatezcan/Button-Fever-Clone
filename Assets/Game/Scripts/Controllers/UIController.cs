@@ -20,15 +20,11 @@ public class UIController : Controller
     {
         ShowMainScreen();
     }
-    public override void GameFail()
+    public override void GameOver()
     {
         ShowEndScreen();
     }
 
-    public override void GameSuccess()
-    {
-        ShowEndScreen();
-    }
     #endregion
 
     public void HideAll()
