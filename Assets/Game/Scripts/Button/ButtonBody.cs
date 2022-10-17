@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class ButtonBody : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<GameObject> _bodies; 
+    public void Initialize(GameEnums.ButtonTypes bodyType)
     {
-        
+        HideAllBodies();
+        ShowBody(bodyType);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ShowBody(GameEnums.ButtonTypes bodyType)
     {
-        
+        _bodies[((int)bodyType)].SetActive(true);
+    }
+
+    private void HideAllBodies()
+    {
+        _bodies.ForEach(body => body.SetActive(false));
     }
 }
