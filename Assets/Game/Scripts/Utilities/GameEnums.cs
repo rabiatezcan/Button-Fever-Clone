@@ -3,27 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameEnums
-{ 
-    public enum GameState
+{
+    public enum TriggerBehavior
     {
-        Loading, 
-        Main,
-        Game,
-        End
+        OnTriggerEnter,
+        OnTriggerExit,
+        Both
     }
 
-    public enum LevelEditorTypes
-    {
-        Info,
-        Create, 
-    }
-    public enum LevelObjects
-    {
-        Ball,
-        Platform,
-        CheckPoint,
-        LevelEnd, 
-        WingTrigger
-    }  
-    
 }
