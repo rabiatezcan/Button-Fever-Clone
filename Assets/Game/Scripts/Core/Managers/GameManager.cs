@@ -11,15 +11,6 @@ public class GameManager : MonoBehaviour
     [Header("Controllers")]
     [SerializeField] private List<Controller> _controllers;
 
-    private GameEnums.GameState _currentState;
-    public GameEnums.GameState CurrentState
-    {
-        get => _currentState;
-        set
-        {
-            _currentState = value;
-        }
-    }
 
     private static GameManager _gameManager;
     public static GameManager Instance
