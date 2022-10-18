@@ -17,11 +17,6 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if (_gameManager == null)
-            {
-
-            }
-
             return _gameManager;
         }
     }
