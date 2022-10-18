@@ -18,6 +18,7 @@ public class Button : PoolObject, ISelectableObject
         get => _onMergeArea; 
         set => _onMergeArea = value;
     }
+    public GameEnums.ButtonTypes CurrentType => _currentType;
 
     public override void SetActive()
     {
@@ -27,14 +28,14 @@ public class Button : PoolObject, ISelectableObject
     public void Initialize()
     {
         _currentType = GameEnums.ButtonTypes.One;
-        _body.Initialize(_currentType);
+        _body.Initialize(CurrentType);
     }
 
     public void IncreaseBody()
     {
         _currentType++;
         transform.DOMoveY(0f, .1f);
-        _body.IncreaseBody(_currentType);
+        _body.IncreaseBody(CurrentType);
     }
 
     #region ISelectable
