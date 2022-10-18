@@ -28,7 +28,7 @@ public class InputHandler
 
         if (Input.GetMouseButton(0))
         {
-            OnMouseButton?.Invoke(GetMousePositionOnGrid());
+            OnMouseButton?.Invoke(GetMousePosition());
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -37,7 +37,7 @@ public class InputHandler
         }
     }
 
-    private Vector3 GetMousePositionOnGrid()
+    private Vector3 GetMousePosition()
     {
         Vector3 mousePos = Vector3.zero;
 
