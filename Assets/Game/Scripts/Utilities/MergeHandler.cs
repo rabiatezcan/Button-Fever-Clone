@@ -6,6 +6,9 @@ public static class MergeHandler
 {
     private static List<Button> _buttons = new List<Button>();
 
+    private static bool AreButtonsSame => _buttons[0].CurrentType == _buttons[1].CurrentType;
+    private static bool BothOnMergeArea => _buttons[0].OnMergeArea && _buttons[1].OnMergeArea;
+
     public static void AddMergeElement(Button button)
     {
         _buttons.Add(button);
@@ -24,7 +27,7 @@ public static class MergeHandler
     }
     private static void Merge()
     {
-        if (_buttons[0].OnMergeArea && _buttons[1].OnMergeArea)
+        if (AreButtonsSame && BothOnMergeArea)
         {
             _buttons[0].IncreaseBody();
             _buttons[1].Dismiss();
