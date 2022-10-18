@@ -10,7 +10,6 @@ public class Button : PoolObject, ISelectableObject
     [SerializeField] private float _yAxisSelectionOffset;
     private GameEnums.ButtonTypes _currentType;
 
-    private Vector3 _selectionOffset;
     private Vector3 _defaultPosition;
     private Vector3 _dropPosition;
     private bool _onMergeArea; 
@@ -27,14 +26,21 @@ public class Button : PoolObject, ISelectableObject
     public void Initialize()
     {
         _currentType = GameEnums.ButtonTypes.One;
+        _defaultPosition = transform.position;
         _body.Initialize(CurrentType);
     }
 
     public void IncreaseBody()
     {
         _currentType++;
+        _defaultPosition = _dropPosition;
         transform.DOMoveY(0f, .1f);
         _body.IncreaseBody(CurrentType);
+    }
+
+    public void ReturnDefaultPosition()
+    {
+        transform.DOMove(_defaultPosition, .3f);
     }
 
     public void EnterSpawnPointBehaviour(Vector3 pos)
@@ -50,18 +56,16 @@ public class Button : PoolObject, ISelectableObject
     }
 
     #region ISelectable
-    public void Select(Vector3 inputPos)
+    public void Select()
     {
         _defaultPosition = transform.position;
         _dropPosition = _defaultPosition;
         transform.DOMoveY(transform.position.y + _yAxisSelectionOffset, .3f);
-        _selectionOffset = transform.position - inputPos;
     }
     public void Drag(Vector3 inputPos)
     {
-        Vector3 pos = inputPos + _selectionOffset;
-        pos.y = _yAxisSelectionOffset;
-        transform.DOMove(pos, .1f);
+        inputPos.y = transform.position.y;
+        transform.position = inputPos;
     }
 
     public void Drop()
