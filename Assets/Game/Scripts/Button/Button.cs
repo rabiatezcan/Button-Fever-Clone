@@ -11,13 +11,12 @@ public class Button : PoolObject, ISelectableObject
     private GameEnums.ButtonTypes _currentType;
 
     private Vector3 _selectionOffset;
-    private bool _onMergeArea;
+    private Vector3 _defaultPosition;
+    private Vector3 _dropPosition;
+    private bool _onMergeArea; 
 
-    public bool OnMergeArea 
-    {
-        get => _onMergeArea; 
-        set => _onMergeArea = value;
-    }
+    public bool OnMergeArea  => _onMergeArea; 
+
     public GameEnums.ButtonTypes CurrentType => _currentType;
 
     public override void SetActive()
@@ -38,9 +37,23 @@ public class Button : PoolObject, ISelectableObject
         _body.IncreaseBody(CurrentType);
     }
 
+    public void EnterSpawnPointBehaviour(Vector3 pos)
+    {
+        _onMergeArea = true;
+        pos.y = 0f;
+        _dropPosition = pos;
+    }
+    public void ExitSpawnPointBehaviour()
+    {
+        _onMergeArea = false;
+        _dropPosition = _defaultPosition;
+    }
+
     #region ISelectable
     public void Select(Vector3 inputPos)
     {
+        _defaultPosition = transform.position;
+        _dropPosition = _defaultPosition;
         transform.DOMoveY(transform.position.y + _yAxisSelectionOffset, .3f);
         _selectionOffset = transform.position - inputPos;
     }
@@ -53,7 +66,7 @@ public class Button : PoolObject, ISelectableObject
 
     public void Drop()
     {
-        transform.DOMoveY(0f, .3f);
+        transform.DOMove(_dropPosition, .3f);
     }
 
 

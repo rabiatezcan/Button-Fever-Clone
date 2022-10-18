@@ -11,12 +11,12 @@ public class SpawnPoint : MonoBehaviour
     {
         _isFull = true;
         var button = other.GetComponentInParent<Button>();
-        button.OnMergeArea = true;
+        button.EnterSpawnPointBehaviour(transform.position);
     }
     public void TriggerExitBehaviour(Collider other)
     {
         _isFull = false;
         var button = other.GetComponentInParent<Button>();
-        button.OnMergeArea = false;
+        button.ExitSpawnPointBehaviour();
     }
 }
