@@ -32,6 +32,12 @@ public static class MergeHandler
             _buttons[0].IncreaseBody();
             _buttons[1].Dismiss();
         }
+        else
+        {
+            _buttons[0].ReturnDefaultPosition();
+            _buttons[1].ReturnDefaultPosition();
+        }
+
         ClearAll();
     }
 }
