@@ -6,12 +6,15 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     [SerializeField] private ButtonSpawnArea _spawnArea;
+    [SerializeField] private Board _board;
     public void Initialize()
     {
+        gameObject.SetActive(true);
+        _board.Initialize();
     }
     public void Build()
     {
-        gameObject.SetActive(true);
+        Initialize();
     }
 
     public void Remove()
