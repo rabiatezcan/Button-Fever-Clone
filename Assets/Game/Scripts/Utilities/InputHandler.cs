@@ -3,19 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputHandler 
+public class InputHandler
 {
-    public Action<Vector3> OnMouseButtonDown;
+    public Action OnMouseButtonDown;
     public Action<Vector3> OnMouseButton;
     public Action OnMouseButtonUp;
-    
-    private Camera _camera;
-    private float _zAxisPosition;
 
-    public InputHandler(Camera camera)
+    private Plane plane;
+    public InputHandler()
     {
-        _camera = camera;
-        _zAxisPosition = _camera.WorldToScreenPoint(Vector3.forward * 30f).z;
+        plane = new Plane(Vector3.up, Vector3.zero);
     }
     public void Update()
     {
@@ -26,12 +23,12 @@ public class InputHandler
     {
         if (Input.GetMouseButtonDown(0))
         {
-            OnMouseButtonDown?.Invoke(GetMouseWorldPosition());
+            OnMouseButtonDown?.Invoke();
         }
 
         if (Input.GetMouseButton(0))
         {
-            OnMouseButton?.Invoke(GetMouseWorldPosition());
+            OnMouseButton?.Invoke(GetMousePositionOnGrid());
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -40,13 +37,18 @@ public class InputHandler
         }
     }
 
-    private Vector3 GetMouseWorldPosition()
+    private Vector3 GetMousePositionOnGrid()
     {
-        Vector3 position = Input.mousePosition;
+        Vector3 mousePos = Vector3.zero;
 
-        position.z = _zAxisPosition;
-
-        return _camera.ScreenToWorldPoint(position);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out var enter))
+        {
+            mousePos = ray.GetPoint(enter);
+            //mousePos = Vector3Int.RoundToInt((mousePos * 2f));
+            //mousePos /= 2f;
+        }
+        return mousePos;
     }
 
 }

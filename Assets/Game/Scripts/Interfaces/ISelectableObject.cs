@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface ISelectableObject
 {
-    public void Select(Vector3 inputPos);
+    public void Select();
 
     public void Drag(Vector3 inputPos);
 
