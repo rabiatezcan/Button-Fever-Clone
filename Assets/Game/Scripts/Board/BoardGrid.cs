@@ -7,11 +7,11 @@ public class BoardGrid : MonoBehaviour
     [SerializeField] private int _height;
     [SerializeField] private int _width;
 
-    private GridCell[,] nodes;
+    private GridCell[,] gridCells;
     
     public void Initialize()
     {
-        nodes = new GridCell[_width, _height];
+        gridCells = new GridCell[_width, _height];
         CreateGrid();
     }
 
