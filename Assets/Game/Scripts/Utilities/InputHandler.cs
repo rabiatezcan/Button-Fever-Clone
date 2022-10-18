@@ -45,8 +45,7 @@ public class InputHandler
         if (plane.Raycast(ray, out var enter))
         {
             mousePos = ray.GetPoint(enter);
-            //mousePos = Vector3Int.RoundToInt((mousePos * 2f));
-            //mousePos /= 2f;
+          
         }
         return mousePos;
     }
