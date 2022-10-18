@@ -6,8 +6,14 @@ public class GridCell : PoolObject
 {
     private bool _isPlaceable;
 
+    public bool IsPlaceable 
+    { 
+        get => _isPlaceable; 
+        set => _isPlaceable = value; 
+    }
+
     public void Initialize()
     {
-        _isPlaceable = true;
+        IsPlaceable = true;
     }
 }

@@ -12,11 +12,17 @@ public class Button : PoolObject, ISelectableObject
 
     private Vector3 _defaultPosition;
     private Vector3 _dropPosition;
-    private bool _onMergeArea; 
+    private bool _onMergeArea;
 
-    public bool OnMergeArea  => _onMergeArea; 
+    public bool OnMergeArea => _onMergeArea;
 
     public GameEnums.ButtonTypes CurrentType => _currentType;
+
+    public Vector3 DropPosition
+    {
+        get => _dropPosition;
+        set => _dropPosition = value;
+    }
 
     public override void SetActive()
     {
@@ -55,6 +61,12 @@ public class Button : PoolObject, ISelectableObject
         _dropPosition = _defaultPosition;
     }
 
+    public List<Vector3> GetBodyPositions()
+    {
+        _body.SetBodyPositions();
+        return _body.BodyPositions;
+    }
+
     #region ISelectable
     public void Select()
     {
@@ -70,6 +82,9 @@ public class Button : PoolObject, ISelectableObject
 
     public void Drop()
     {
+        if (!_onMergeArea)
+            CheckBoardAreaHandler.Instance.CheckBoardArea(this);
+        
         transform.DOMove(_dropPosition, .3f);
     }
 

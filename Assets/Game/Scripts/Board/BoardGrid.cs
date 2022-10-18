@@ -7,11 +7,13 @@ public class BoardGrid : MonoBehaviour
     [SerializeField] private int _height;
     [SerializeField] private int _width;
 
-    private GridCell[,] gridCells;
-    
+    private GridCell[,] _gridCells;
+
+    public GridCell[,] GridCells => _gridCells;
+
     public void Initialize()
     {
-        gridCells = new GridCell[_width, _height];
+        _gridCells = new GridCell[_width, _height];
         CreateGrid();
     }
 
@@ -25,6 +27,8 @@ public class BoardGrid : MonoBehaviour
                 cell.SetPosition(new Vector3((i * 1.5f) - 4f, 0f, (j*1.5f) - 5f));
                 cell.Initialize(); 
                 cell.SetActive();
+
+                _gridCells[i,j] = cell;
             }
         }
     }
