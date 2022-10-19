@@ -31,7 +31,7 @@ public class LevelController : Controller
 
     private void LoadLevel()
     {
-        int currentLevelCount = PlayerHelper.Instance.PlayerLevel - 1;
+        int currentLevelCount = PlayerHelper.Instance.Player.Level - 1;
 
         if (currentLevelCount >= _levels.Count)
         {

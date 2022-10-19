@@ -5,7 +5,6 @@ using UnityEngine;
 public class Board : MonoBehaviour, ISelectableObject
 {
     [SerializeField] private BoardGrid _grid;
-    [SerializeField] private float _automatedPushFrequence;
 
     private List<Button> _buttons = new List<Button>();
     private int _totalCoin;
@@ -21,7 +20,7 @@ public class Board : MonoBehaviour, ISelectableObject
 
     public void StartGame()
     {
-        StartCoroutine(AutomatedPush(_automatedPushFrequence));
+        StartCoroutine(AutomatedPush(PlayerHelper.Instance.Player.AutomatedPushTime));
     }
 
     #endregion

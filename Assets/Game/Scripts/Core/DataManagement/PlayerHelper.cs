@@ -26,8 +26,7 @@ public class PlayerHelper
         }
     }
 
-    public int PlayerLevel => _playerData.Level;
-    public int PlayerCoin => _playerData.Coin;
+    public PlayerData Player => _playerData;
     private void Save()
     {
         SaveSystem.Save(_playerData);
@@ -50,4 +49,19 @@ public class PlayerHelper
         Save();
     }
     
+    public void UpgradeSpawnButtonCoinAmount()
+    {
+        ScoreSystem.DecreaseCoin(_playerData.UpgradeSpawnButtonCoinAmount);
+        _playerData.SetUpgradeAmountForSpawnButtonCoin();
+
+        Save();
+    }  
+    public void UpgradeAutomatedPushTime()
+    {
+        _playerData.AutomatedPushTime += CONSTANTS.DEFAULT_UPGRADE_AMOUNT_PUSH_TIMER;
+        ScoreSystem.DecreaseCoin(_playerData.UpgradeAutomatedPushTimeAmount);
+        _playerData.SetUpgradeAmountForAutomatedPushTime();
+
+        Save();
+    }
 }
