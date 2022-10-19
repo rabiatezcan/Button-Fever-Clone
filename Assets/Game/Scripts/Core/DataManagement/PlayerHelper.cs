@@ -27,6 +27,7 @@ public class PlayerHelper
     }
 
     public int PlayerLevel => _playerData.Level;
+    public int PlayerCoin => _playerData.Coin;
     private void Save()
     {
         SaveSystem.Save(_playerData);
