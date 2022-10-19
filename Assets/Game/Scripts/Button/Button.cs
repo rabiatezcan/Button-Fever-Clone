@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class Button : PoolObject, ISelectableObject
 {
     [SerializeField] private ButtonBody _body;
+    [SerializeField] private ObjectClampingSettings _clampSettings;
     [SerializeField] private float _yAxisSelectionOffset;
     private GameEnums.ButtonTypes _currentType;
 
@@ -81,7 +82,9 @@ public class Button : PoolObject, ISelectableObject
     }
     public void Drag(Vector3 inputPos)
     {
+        inputPos.x = Mathf.Clamp(inputPos.x, _clampSettings.MinX, _clampSettings.MaxX);
         inputPos.y = transform.position.y;
+        inputPos.z = Mathf.Clamp(inputPos.z, _clampSettings.MinZ, _clampSettings.MaxZ);
         transform.position = inputPos;
     }
 

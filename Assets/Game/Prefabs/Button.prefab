@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _body: {fileID: 3761472133800944313}
+  _clampSettings: {fileID: 11400000, guid: 6df20ff6e29b5f14582b12acaed6553a, type: 2}
   _yAxisSelectionOffset: 1.5
 --- !u!1 &3761472131832071681
 GameObject:
