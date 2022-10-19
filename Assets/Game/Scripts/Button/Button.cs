@@ -86,6 +86,7 @@ public class Button : PoolObject, ISelectableObject
             CheckBoardAreaHandler.Instance.CheckBoardArea(this);
         
         transform.DOMove(_dropPosition, .3f);
+        _defaultPosition = _dropPosition;
     }
 
 
