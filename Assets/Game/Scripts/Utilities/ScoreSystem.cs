@@ -4,25 +4,25 @@ using UnityEngine;
 
 public static class ScoreSystem
 {
-    private static int _currentScore;
+    private static int _currentCoin;
 
-    public static void AddScore(int value)
+    public static void AddCoin(int value)
     {
-        _currentScore += value; 
+        _currentCoin += value; 
         PlayerHelper.Instance.UpdateCoin(value);
     }
 
-    public static void DecreaseScore(int value)
+    public static void DecreaseCoin(int value)
     {
-        _currentScore -= value; 
+        _currentCoin -= value; 
     }
 
-    public static int GetCurrentScore()
+    public static int GetCurrentCoin()
     {
-        return _currentScore;
+        return _currentCoin;
     }
     public static void Reload()
     {
-        _currentScore = 0; 
+        _currentCoin = 0; 
     }
 }
