@@ -5,11 +5,12 @@ using UnityEngine;
 public class Board : MonoBehaviour, ISelectableObject
 {
     [SerializeField] private BoardGrid _grid;
+    [SerializeField] private float _automatedPushFrequence;
 
     private List<Button> _buttons = new List<Button>();
-    public GridCell[,] GridCells => _grid.GridCells;
-
     private int _totalCoin;
+
+    public GridCell[,] GridCells => _grid.GridCells;
 
     #region Core
     public void Initialize()
@@ -20,7 +21,7 @@ public class Board : MonoBehaviour, ISelectableObject
 
     public void StartGame()
     {
-
+        StartCoroutine(AutomatedPush(_automatedPushFrequence));
     }
 
     #endregion
@@ -41,9 +42,19 @@ public class Board : MonoBehaviour, ISelectableObject
 
     #endregion
 
+    private IEnumerator AutomatedPush(float duration)
+    {
+        while (true)
+        {
+            PushButtons();
+            yield return new WaitForSeconds(duration);
+        }
+    }
+
     private void PushButtons()
     { 
         _buttons.ForEach(button => button.Push());
+        ScoreSystem.AddScore(_totalCoin);
     }
 
     private void AddElement(Button button)

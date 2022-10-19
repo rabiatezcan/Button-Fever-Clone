@@ -15,6 +15,11 @@ public class Level : MonoBehaviour
         gameObject.SetActive(true);
         _board.Initialize();
     }
+
+    public void StartGame()
+    {
+        _board.StartGame();
+    }
     public void Build()
     {
         Initialize();

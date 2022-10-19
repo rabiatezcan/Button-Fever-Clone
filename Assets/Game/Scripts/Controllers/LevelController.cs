@@ -16,6 +16,7 @@ public class LevelController : Controller
     }
     public override void StartGame()
     {
+        _currentLevel.StartGame();
     }
     public override void Reload()
     {
