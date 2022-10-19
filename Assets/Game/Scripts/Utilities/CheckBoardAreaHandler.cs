@@ -56,7 +56,6 @@ public class CheckBoardAreaHandler : MonoBehaviour
                 {
                     cell.IsPlaceable = false;
                     _counter++;
-                    Debug.Log(_counter);
                 }
             }
         }
