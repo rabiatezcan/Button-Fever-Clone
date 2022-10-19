@@ -20,6 +20,7 @@ public class GameCoordinator : Controller
 
     public override void Reload()
     {
+        ScoreSystem.Reload();
     }
 
     public override void GameOver()

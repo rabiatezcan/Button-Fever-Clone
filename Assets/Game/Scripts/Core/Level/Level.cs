@@ -7,6 +7,7 @@ public class Level : MonoBehaviour
 {
     [SerializeField] private ButtonSpawnArea _spawnArea;
     [SerializeField] private Board _board;
+    [SerializeField] private Monitor _monitor;
 
     public GridCell[,] GridCells => _board.GridCells;
 
@@ -14,6 +15,7 @@ public class Level : MonoBehaviour
     {
         gameObject.SetActive(true);
         _board.Initialize();
+        _monitor.Initialize();
     }
 
     public void StartGame()

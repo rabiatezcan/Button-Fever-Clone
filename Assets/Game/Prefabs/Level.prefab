@@ -498,6 +498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnArea: {fileID: 470790227888240678}
   _board: {fileID: 8422134783056947391}
+  _monitor: {fileID: 1565325369889462193}
 --- !u!1 &470790227888240676
 GameObject:
   m_ObjectHideFlags: 0

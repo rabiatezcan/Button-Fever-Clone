@@ -54,7 +54,7 @@ public class Board : MonoBehaviour, ISelectableObject
     private void PushButtons()
     { 
         _buttons.ForEach(button => button.Push());
-        ScoreSystem.AddScore(_totalCoin);
+        ScoreSystem.AddCoin(_totalCoin);
     }
 
     private void AddElement(Button button)
