@@ -15,9 +15,8 @@ public class Button : PoolObject, ISelectableObject
     private bool _onMergeArea;
 
     public bool OnMergeArea => _onMergeArea;
-
     public GameEnums.ButtonTypes CurrentType => _currentType;
-
+    public int ButtonValue => _body.GetBodyValue(((int)_currentType));
     public Vector3 DropPosition
     {
         get => _dropPosition;
@@ -67,6 +66,12 @@ public class Button : PoolObject, ISelectableObject
         return _body.BodyPositions;
     }
 
+    public void Push()
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(transform.DOMoveY(.3f, .25f))
+                .Append(transform.DOMoveY(.5f, .25f));
+    }
     #region ISelectable
     public void Select()
     {
@@ -84,12 +89,10 @@ public class Button : PoolObject, ISelectableObject
     {
         if (!_onMergeArea)
             CheckBoardAreaHandler.Instance.CheckBoardArea(this);
-        
+
         transform.DOMove(_dropPosition, .3f);
         _defaultPosition = _dropPosition;
     }
-
-
     #endregion
 
 
@@ -97,14 +100,7 @@ public class Button : PoolObject, ISelectableObject
 
     public void TriggerEnterBehaviour(Collider other)
     {
-        if (other.CompareTag("Button"))
-        {
-            MergeHandler.AddMergeElement(this);
-        }
-    }
-    public void TriggerExitBehaviour(Collider other)
-    {
-
+        MergeHandler.AddMergeElement(this);
     }
     #endregion
 }

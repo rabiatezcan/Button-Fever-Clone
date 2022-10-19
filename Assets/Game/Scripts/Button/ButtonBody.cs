@@ -54,7 +54,7 @@ public class ButtonBody : MonoBehaviour
         _bodies.ForEach(body => body.SetActive(false));
     }
 
-    private int GetBodyValue(int value)
+    public int GetBodyValue(int value)
     {
         return ((int)Mathf.Pow(2, value));
     }
