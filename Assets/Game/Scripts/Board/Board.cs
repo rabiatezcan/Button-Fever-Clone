@@ -25,7 +25,6 @@ public class Board : MonoBehaviour, ISelectableObject
 
     #endregion
 
-
     #region ISelectableObject
     public void Select()
     {

@@ -7,6 +7,7 @@ public class CONSTANTS
     public const float LOADING_DURATION = 1f;
     public const float UPGRADE_AMOUNT_MULTIPLIER = 2f;
     public const float DEFAULT_UPGRADE_AMOUNT_PUSH_TIMER = -.2f;
+    public const float GRID_CELL_SCALE_AMOUNT = 1.5f;
     public const int POOL_INCREMENT_AMOUNT = 3;
     public const int MAX_LEVEL_COUNT = 10;
     

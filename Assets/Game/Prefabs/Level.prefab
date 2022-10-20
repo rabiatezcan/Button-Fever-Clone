@@ -45,6 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _height: 6
   _width: 7
+  _widthOffset: 4
+  _heightOffset: 5
 --- !u!1 &470790226874148435
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _grid: {fileID: 8139729162684865934}
-  _automatedPushFrequence: 2.5
 --- !u!1 &470790227249883155
 GameObject:
   m_ObjectHideFlags: 0

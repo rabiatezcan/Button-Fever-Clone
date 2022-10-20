@@ -9,8 +9,8 @@ public class Button : PoolObject, ISelectableObject
     [SerializeField] private ButtonBody _body;
     [SerializeField] private ObjectClampingSettings _clampSettings;
     [SerializeField] private float _yAxisSelectionOffset;
+   
     private GameEnums.ButtonTypes _currentType;
-
     private Vector3 _defaultPosition;
     private Vector3 _dropPosition;
     private bool _onMergeArea;

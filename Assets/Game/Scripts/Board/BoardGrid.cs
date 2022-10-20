@@ -6,7 +6,8 @@ public class BoardGrid : MonoBehaviour
 {
     [SerializeField] private int _height;
     [SerializeField] private int _width;
-
+    [SerializeField] private float _widthOffset;
+    [SerializeField] private float _heightOffset;
     private GridCell[,] _gridCells;
 
     public GridCell[,] GridCells => _gridCells;
@@ -24,7 +25,7 @@ public class BoardGrid : MonoBehaviour
             for (int j = 0; j < _height; j++)
             {
                 GridCell cell = PoolHandler.Instance.GetItemFromPool("GridCell") as GridCell;
-                cell.SetPosition(new Vector3((i * 1.5f) - 4f, 0f, (j*1.5f) - 5f));
+                cell.SetPosition(new Vector3((i * CONSTANTS.GRID_CELL_SCALE_AMOUNT) - _widthOffset, 0f, (j * CONSTANTS.GRID_CELL_SCALE_AMOUNT) - _heightOffset));
                 cell.Initialize(); 
                 cell.SetActive();
 
