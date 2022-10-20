@@ -15,6 +15,7 @@ public class Button : PoolObject, ISelectableObject
     private Vector3 _dropPosition;
     private bool _onMergeArea;
 
+    #region Properties
     public bool OnMergeArea => _onMergeArea;
     public GameEnums.ButtonTypes CurrentType
     {
@@ -27,7 +28,9 @@ public class Button : PoolObject, ISelectableObject
         get => _dropPosition;
         set => _dropPosition = value;
     }
+    #endregion
 
+    #region Overrides
     public override void SetActive()
     {
         PlayerHelper.Instance.AddButton(this);
@@ -40,50 +43,16 @@ public class Button : PoolObject, ISelectableObject
         PlayerHelper.Instance.RemoveButton(this);
         base.Dismiss();
     }
+    #endregion
 
+    #region Core
     public void Initialize()
     {
         _defaultPosition = transform.position;
         _body.Initialize(CurrentType);
     }
+    #endregion
 
-    public void IncreaseBody()
-    {
-        _currentType++;
-        _defaultPosition = _dropPosition;
-        transform.DOMoveY(0f, .1f);
-        _body.IncreaseBody(CurrentType);
-    }
-
-    public void ReturnDefaultPosition()
-    {
-        transform.DOMove(_defaultPosition, .3f);
-    }
-
-    public void EnterSpawnPointBehaviour(Vector3 pos)
-    {
-        _onMergeArea = true;
-        pos.y = 0f;
-        _dropPosition = pos;
-    }
-    public void ExitSpawnPointBehaviour()
-    {
-        _onMergeArea = false;
-        _dropPosition = _defaultPosition;
-    }
-
-    public List<Vector3> GetBodyPositions()
-    {
-        _body.SetBodyPositions();
-        return _body.BodyPositions;
-    }
-
-    public void Push()
-    {
-        Sequence sequence = DOTween.Sequence();
-        sequence.Append(transform.DOMoveY(.3f, .25f))
-                .Append(transform.DOMoveY(.5f, .25f));
-    }
     #region ISelectable
     public void Select()
     {
@@ -109,6 +78,21 @@ public class Button : PoolObject, ISelectableObject
     }
     #endregion
 
+    #region Body
+    public void IncreaseBody()
+    {
+        _currentType++;
+        _defaultPosition = _dropPosition;
+        transform.DOMoveY(0f, .1f);
+        _body.IncreaseBody(CurrentType);
+    }
+
+    public List<Vector3> GetBodyPositions()
+    {
+        _body.SetBodyPositions();
+        return _body.BodyPositions;
+    }
+    #endregion
 
     #region Trigger Behaviour
 
@@ -116,5 +100,29 @@ public class Button : PoolObject, ISelectableObject
     {
         MergeHandler.AddMergeElement(this);
     }
-    #endregion
+    public void EnterSpawnPointBehaviour(Vector3 pos)
+    {
+        _onMergeArea = true;
+        pos.y = 0f;
+        _dropPosition = pos;
+    }
+    public void ExitSpawnPointBehaviour()
+    {
+        _onMergeArea = false;
+        _dropPosition = _defaultPosition;
+    }
+    #endregion,
+
+    public void ReturnDefaultPosition()
+    {
+        transform.DOMove(_defaultPosition, .3f);
+    }
+
+    public void Push()
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(transform.DOMoveY(.3f, .25f))
+                .Append(transform.DOMoveY(.5f, .25f));
+    }
+
 }
