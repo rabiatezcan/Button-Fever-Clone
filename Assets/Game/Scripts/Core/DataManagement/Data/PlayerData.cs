@@ -16,6 +16,9 @@ public class PlayerData
 
     public void SetUpgradeAmountForSpawnButtonCoin()
     {
+        if (UpgradeSpawnButtonCoinAmount == 0)
+            UpgradeSpawnButtonCoinAmount = 5; 
+
         UpgradeSpawnButtonCoinAmount = ((int)Mathf.Ceil(UpgradeSpawnButtonCoinAmount * CONSTANTS.UPGRADE_AMOUNT_MULTIPLIER));
     }
     public void SetUpgradeAmountForAutomatedPushTime()
@@ -30,7 +33,7 @@ public class PlayerData
         Level = 1;
         ActiveButtonCount = 0;
         AutomatedPushTime = 2.5f;
-        UpgradeSpawnButtonCoinAmount = 10;
+        UpgradeSpawnButtonCoinAmount = 0;
         UpgradeAutomatedPushTimeAmount = 10;
     }
 

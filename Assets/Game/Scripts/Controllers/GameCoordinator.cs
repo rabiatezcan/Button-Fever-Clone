@@ -15,7 +15,6 @@ public class GameCoordinator : Controller
     }
     public override void StartGame()
     {
-        _spawnHandler.Spawn();
     }
 
     public override void Reload()
