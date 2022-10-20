@@ -6,6 +6,7 @@ using UnityEditor;
 [System.Serializable]
 public class PlayerData
 {
+    public int TotalCoin { get; set; }
     public int Coin { get; set; }
     public int Level { get; set; }
     public float AutomatedPushTime { get; set; }
@@ -23,6 +24,7 @@ public class PlayerData
 
     public void Build()
     {
+        TotalCoin = 0;
         Coin = 0;
         Level = 1;
         AutomatedPushTime = 2.5f;

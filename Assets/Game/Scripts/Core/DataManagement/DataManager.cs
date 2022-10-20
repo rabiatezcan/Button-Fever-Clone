@@ -20,5 +20,11 @@ public class DataManager : MonoBehaviour
         PlayerHelper.Instance.ResetPlayerData();
     }
 
+    private void OnApplicationQuit()
+    {
+#if UNITY_EDITOR
+        PlayerHelper.Instance.UpdateCoin(ScoreSystem.GetCurrentCoin());
+#endif
 
+    }
 }

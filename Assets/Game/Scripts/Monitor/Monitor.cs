@@ -11,7 +11,7 @@ public class Monitor : MonoBehaviour
 
     public void Initialize()
     {
-        _coin = PlayerHelper.Instance.Player.Coin;
+        _coin = PlayerHelper.Instance.Player.TotalCoin;
         SetText();
     }
     private void SetText()
@@ -21,10 +21,10 @@ public class Monitor : MonoBehaviour
 
     private void UpdateMonitorTextArea()
     {
-        if (_coin == PlayerHelper.Instance.Player.Coin)
+        if (_coin == PlayerHelper.Instance.Player.TotalCoin)
             return;
 
-        _coin = PlayerHelper.Instance.Player.Coin;
+        _coin = PlayerHelper.Instance.Player.TotalCoin;
         SetText();
     }
     private void Update()

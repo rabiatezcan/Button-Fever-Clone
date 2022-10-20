@@ -11,7 +11,7 @@ public class GameCoordinator : Controller
     {
         _spawnHandler.Initialize(gameManager.LevelController);
         _checkBoardAreaHandler.Initialize(gameManager.LevelController);
-
+        ScoreSystem.Initialize();
     }
     public override void StartGame()
     {
@@ -20,7 +20,6 @@ public class GameCoordinator : Controller
 
     public override void Reload()
     {
-        ScoreSystem.Reload();
     }
 
     public override void GameOver()

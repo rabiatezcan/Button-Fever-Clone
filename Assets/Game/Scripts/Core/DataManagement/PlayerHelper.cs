@@ -42,9 +42,15 @@ public class PlayerHelper
         Save();
     }
 
+    public void UpdateTotalCoin(int amount)
+    {
+        _playerData.TotalCoin += amount;
+
+        Save();
+    }
     public void UpdateCoin(int amount)
     {
-        _playerData.Coin += amount;
+        _playerData.Coin = amount;
 
         Save();
     }
