@@ -41,7 +41,7 @@ public class SpawnButtonCoinUpgrade : UpgradeObject
     public override void Upgrade()
     {
         _spawnHandler.Spawn();
-        PlayerHelper.Instance.UpgradeAutomatedPushTime();
+        PlayerHelper.Instance.UpgradeSpawnButtonCoinAmount();
         Refresh();
     }
 
