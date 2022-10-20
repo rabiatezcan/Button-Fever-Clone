@@ -6,15 +6,11 @@ public class GridCell : PoolObject
 {
     private bool _isPlaceable;
 
-    public bool IsPlaceable 
-    { 
-        get => _isPlaceable; 
-        set => _isPlaceable = value; 
-    }
+    public bool IsPlaceable => _isPlaceable;
 
     public void Initialize()
     {
-        IsPlaceable = true;
+        _isPlaceable = true;
     }
 
     public void TriggerEnterBehaviour(Collider other)
@@ -23,6 +19,6 @@ public class GridCell : PoolObject
     }
     public void TriggerExitBehaviour(Collider other)
     {
-        IsPlaceable = true;
+        _isPlaceable = true;
     }
 }
