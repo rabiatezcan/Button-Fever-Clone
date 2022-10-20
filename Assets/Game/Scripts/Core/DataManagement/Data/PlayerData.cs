@@ -9,6 +9,7 @@ public class PlayerData
     public int TotalCoin { get; set; }
     public int Coin { get; set; }
     public int Level { get; set; }
+    public int ActiveButtonCount { get; set; }
     public float AutomatedPushTime { get; set; }
     public int UpgradeSpawnButtonCoinAmount { get; set; }
     public int UpgradeAutomatedPushTimeAmount { get; set; }
@@ -27,6 +28,7 @@ public class PlayerData
         TotalCoin = 0;
         Coin = 0;
         Level = 1;
+        ActiveButtonCount = 0;
         AutomatedPushTime = 2.5f;
         UpgradeSpawnButtonCoinAmount = 10;
         UpgradeAutomatedPushTimeAmount = 10;

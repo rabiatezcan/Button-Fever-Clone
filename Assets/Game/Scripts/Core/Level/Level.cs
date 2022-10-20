@@ -21,6 +21,7 @@ public class Level : MonoBehaviour
     public void StartGame()
     {
         _board.StartGame();
+        PlayerHelper.Instance.SetActiveButtons();
     }
     public void Build()
     {

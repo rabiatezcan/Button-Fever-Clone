@@ -16,7 +16,11 @@ public class Button : PoolObject, ISelectableObject
     private bool _onMergeArea;
 
     public bool OnMergeArea => _onMergeArea;
-    public GameEnums.ButtonTypes CurrentType => _currentType;
+    public GameEnums.ButtonTypes CurrentType
+    {
+        get => _currentType;
+        set => _currentType = value;
+    }
     public int ButtonValue => _body.GetBodyValue(((int)_currentType));
     public Vector3 DropPosition
     {
@@ -26,12 +30,19 @@ public class Button : PoolObject, ISelectableObject
 
     public override void SetActive()
     {
+        PlayerHelper.Instance.AddButton(this);
         Initialize();
         base.SetActive();
     }
+
+    public override void Dismiss()
+    {
+        PlayerHelper.Instance.RemoveButton(this);
+        base.Dismiss();
+    }
+
     public void Initialize()
     {
-        _currentType = GameEnums.ButtonTypes.One;
         _defaultPosition = transform.position;
         _body.Initialize(CurrentType);
     }
