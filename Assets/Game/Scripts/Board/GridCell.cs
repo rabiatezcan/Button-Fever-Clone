@@ -16,4 +16,13 @@ public class GridCell : PoolObject
     {
         IsPlaceable = true;
     }
+
+    public void TriggerEnterBehaviour(Collider other)
+    {
+        _isPlaceable = false;
+    }
+    public void TriggerExitBehaviour(Collider other)
+    {
+        IsPlaceable = true;
+    }
 }

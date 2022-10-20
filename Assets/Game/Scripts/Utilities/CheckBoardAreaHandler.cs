@@ -33,8 +33,7 @@ public class CheckBoardAreaHandler : MonoBehaviour
         CheckPositionsMatch();
 
         if (IsMatch())
-            button.DropPosition = MidPointHelper.GetMidPoint(_positions
-                ) + (Vector3.up * .5f);
+            button.DropPosition = MidPointHelper.GetMidPoint(_positions) + (Vector3.up * .5f);
         else
             button.ReturnDefaultPosition();
     }
@@ -58,7 +57,6 @@ public class CheckBoardAreaHandler : MonoBehaviour
             {
                 if ((cell.transform.position == _positions[i]) && cell.IsPlaceable)
                 {
-                    cell.IsPlaceable = false;
                     _counter++;
                 }
             }
